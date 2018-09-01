@@ -7,7 +7,7 @@ LDFLAGS =
 #LDFLAGS = -L"C:\MinGW\lib" -mwindows -s
 MKDIR = mkdir
 RM = rm -frv
-
+CFLAGS += -std=c++11
 
 .PHONY: all clean
 
